@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:list_items/login_screen/model/login_model.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -10,6 +11,14 @@ class _loginPageState extends State<loginPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
   bool hidePassword = true;
+  loginRequest requestModel;
+
+  @override
+  void inisState() {
+    super.initState();
+    requestModel = new loginRequest();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +59,7 @@ class _loginPageState extends State<loginPage> {
                         SizedBox(height: 20),
                         new TextFormField(
                           keyboardType: TextInputType.emailAddress,
-                          // onSaved: ,1
+                          onSaved: (input) => requestModel.email = input,
                           validator: (input) => !input.contains("@")
                               ? "Email harus valid" /*email harus valid*/
                               : null,
@@ -75,7 +84,7 @@ class _loginPageState extends State<loginPage> {
                         SizedBox(height: 20),
                         new TextFormField(
                           keyboardType: TextInputType.text,
-                          // onSaved: ,1
+                          onSaved: (input) => requestModel.password = input,
                           validator: (input) => input.length < 3
                               ? "Password harus lebih dari 3 huruf" /*Password harus lebih dari 3 huruf*/
                               : null,
@@ -115,7 +124,11 @@ class _loginPageState extends State<loginPage> {
                         FlatButton(
                           padding: EdgeInsets.symmetric(
                               vertical: 12, horizontal: 80),
-                          onPressed: () {},
+                          onPressed: () {
+                            if (validateAndSave()) {
+                              print(requestModel.toJson());
+                            }
+                          },
                           child: Text(
                             "Login",
                             style: TextStyle(color: Colors.white),
@@ -133,5 +146,14 @@ class _loginPageState extends State<loginPage> {
         ),
       ),
     );
+  }
+
+  bool validateAndSave() {
+    final form = globalFormKey.currentState;
+    if (form.validate()) {
+      form.save;
+      return true;
+    }
+    return false;
   }
 }
