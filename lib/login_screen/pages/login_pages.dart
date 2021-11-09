@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class loginPage extends StatefulWidget {
@@ -7,10 +8,12 @@ class loginPage extends StatefulWidget {
 
 class _loginPageState extends State<loginPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: Theme.of(context).accentColor,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -35,6 +38,26 @@ class _loginPageState extends State<loginPage> {
                           offset: Offset(0, 10),
                           blurRadius: 20),
                     ],
+                  ),
+                  child: Form(
+                    key: globalFormKey,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 25),
+                        Text('Login',
+                            style: Theme.of(context).textTheme.headline2),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        new TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          // onSaved: ,1
+                          validator: (input) => !input.contains("@")
+                              ? "Email Id should be valid" /*email harus valid*/
+                              : null,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
