@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:list_items/login_screen/HUD.dart';
-import 'package:list_items/login_screen/api/login_api.dart';
-import 'package:list_items/login_screen/model/login_model.dart';
+import 'package:list_items/login_page/HUD.dart';
+import 'package:list_items/api/api.dart';
+import 'package:list_items/login_page/model/login_model.dart';
 
 class loginPage extends StatefulWidget {
   @override
