@@ -9,6 +9,7 @@ class loginPage extends StatefulWidget {
 class _loginPageState extends State<loginPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
+  bool hidePassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,14 +47,12 @@ class _loginPageState extends State<loginPage> {
                         SizedBox(height: 25),
                         Text('Login',
                             style: Theme.of(context).textTheme.headline2),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        SizedBox(height: 20),
                         new TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           // onSaved: ,1
                           validator: (input) => !input.contains("@")
-                              ? "Email Id should be valid" /*email harus valid*/
+                              ? "Email harus valid" /*email harus valid*/
                               : null,
                           decoration: new InputDecoration(
                             hintText: "Email Address",
@@ -73,6 +72,46 @@ class _loginPageState extends State<loginPage> {
                                 color: Theme.of(context).accentColor),
                           ),
                         ),
+                        SizedBox(height: 20),
+                        new TextFormField(
+                          keyboardType: TextInputType.text,
+                          // onSaved: ,1
+                          validator: (input) => input.length < 3
+                              ? "Password harus lebih dari 3 huruf" /*Password harus lebih dari 3 huruf*/
+                              : null,
+                          obscureText: hidePassword,
+                          decoration: new InputDecoration(
+                            hintText: "Password",
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .accentColor
+                                    .withOpacity(0.2),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ),
+                            prefixIcon: Icon(Icons.lock,
+                                color: Theme.of(context).accentColor),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  hidePassword = !hidePassword;
+                                });
+                              },
+                              color: Theme.of(context)
+                                  .accentColor
+                                  .withOpacity(0.4),
+                              icon: Icon(hidePassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 30),
                       ],
                     ),
                   ),
