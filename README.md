@@ -1,3 +1,4 @@
-# Assignment Test PT INSPIRA SOLUTECT
+# Assignment Test PT Inspira Solutech
 
-# WORK IN PROGRESS
+Work in Progress
+
