@@ -112,6 +112,17 @@ class _loginPageState extends State<loginPage> {
                           ),
                         ),
                         SizedBox(height: 30),
+                        FlatButton(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 80),
+                          onPressed: () {},
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          color: Theme.of(context).accentColor,
+                          shape: StadiumBorder(),
+                        ),
                       ],
                     ),
                   ),
