@@ -24,7 +24,7 @@ class _loginPageState extends State<loginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ProgressHUD(
+    return Display(
       child: _uiSteup(context),
       inAsyncCall: isApiCallProcess,
       opacity: 0.3,
