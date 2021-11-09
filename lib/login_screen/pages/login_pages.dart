@@ -55,7 +55,24 @@ class _loginPageState extends State<loginPage> {
                           validator: (input) => !input.contains("@")
                               ? "Email Id should be valid" /*email harus valid*/
                               : null,
-                        )
+                          decoration: new InputDecoration(
+                            hintText: "Email Address",
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context)
+                                    .accentColor
+                                    .withOpacity(0.2),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).accentColor,
+                              ),
+                            ),
+                            prefixIcon: Icon(Icons.email,
+                                color: Theme.of(context).accentColor),
+                          ),
+                        ),
                       ],
                     ),
                   ),
