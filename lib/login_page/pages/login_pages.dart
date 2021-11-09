@@ -71,9 +71,9 @@ class _loginPageState extends State<loginPage> {
                         new TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           onSaved: (input) => requestModel.email = input,
-                          validator: (input) => !input.contains("@")
-                              ? "Email harus valid" /*email harus valid*/
-                              : null,
+                          // validator: (input) => !input.contains("@")
+                          //     ? "Email harus valid" /*email harus valid*/
+                          //     : null,
                           decoration: new InputDecoration(
                             hintText: "Email Address",
                             enabledBorder: UnderlineInputBorder(
@@ -96,9 +96,9 @@ class _loginPageState extends State<loginPage> {
                         new TextFormField(
                           keyboardType: TextInputType.text,
                           onSaved: (input) => requestModel.password = input,
-                          validator: (input) => input.length < 3
-                              ? "Password harus lebih dari 3 huruf" /*Password harus lebih dari 3 huruf*/
-                              : null,
+                          // validator: (input) => input.length < 3
+                          //     ? "Password harus lebih dari 3 huruf" /*Password harus lebih dari 3 huruf*/
+                          //     : null,
                           obscureText: hidePassword,
                           decoration: new InputDecoration(
                             hintText: "Password",
@@ -156,7 +156,7 @@ class _loginPageState extends State<loginPage> {
                                   );
                                 }
                               });
-                              print(requestModel.toJson());
+                              // print(requestModel.toJson());
                             }
                           },
                           child: Text(
