@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:list_items/login_screen/HUD.dart';
+import 'package:list_items/login_screen/api/login_api.dart';
 import 'package:list_items/login_screen/model/login_model.dart';
 
 class loginPage extends StatefulWidget {
@@ -12,6 +14,7 @@ class _loginPageState extends State<loginPage> {
   GlobalKey<FormState> globalFormKey = new GlobalKey<FormState>();
   bool hidePassword = true;
   loginRequest requestModel;
+  bool isApiCallProcess = false;
 
   @override
   void inisState() {
@@ -21,6 +24,14 @@ class _loginPageState extends State<loginPage> {
 
   @override
   Widget build(BuildContext context) {
+    return ProgressHUD(
+      child: _uiSteup(context),
+      inAsyncCall: isApiCallProcess,
+      opacity: 0.3,
+    );
+  }
+
+  Widget _uiSteup(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Theme.of(context).accentColor,
@@ -126,6 +137,25 @@ class _loginPageState extends State<loginPage> {
                               vertical: 12, horizontal: 80),
                           onPressed: () {
                             if (validateAndSave()) {
+                              setState(() {
+                                isApiCallProcess = true;
+                              });
+
+                              loginAPI apiService = new loginAPI();
+                              apiService.login(requestModel).then((value) {
+                                setState(() {
+                                  isApiCallProcess = false;
+                                });
+                                if (value.token.isNotEmpty) {
+                                  final snackbar = SnackBar(
+                                    content: Text("Login Successfull"),
+                                  );
+                                } else {
+                                  final snackbar = SnackBar(
+                                    content: Text(value.error),
+                                  );
+                                }
+                              });
                               print(requestModel.toJson());
                             }
                           },

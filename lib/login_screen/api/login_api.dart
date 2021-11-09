@@ -5,9 +5,10 @@ import '../model/login_model.dart';
 class loginAPI {
   Future<loginRespon> login(loginRequest requestModel) async {
     final response = await http.post(
-        Uri.parse("http://172.104.44.22/api/method/login"),
+        Uri.parse(
+            "http://172.104.44.22/api/method/login?usr=Administrator&pwd=admin"),
         body: requestModel.toJson());
-    if (response.statusCode == 200 || response.statusCode == 400) {
+    if (response.statusCode == 200) {
       return loginRespon.fromJson(
         json.decode(response.body),
       );
