@@ -165,16 +165,16 @@ class _loginPageState extends State<loginPage> {
                           ),
                           color: Theme.of(context).accentColor,
                           shape: StadiumBorder(),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return HomePage();
-                                },
-                              ),
-                            );
-                          },
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) {
+                          //         return HomePage();
+                          //       },
+                          //     ),
+                          //   );
+                          // },
                         ),
                       ],
                     ),
