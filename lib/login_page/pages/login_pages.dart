@@ -72,7 +72,7 @@ class _loginPageState extends State<loginPage> {
                           keyboardType: TextInputType.emailAddress,
                           onSaved: (input) => requestModel.email = input,
                           // validator: (input) => !input.contains("@")
-                          //     ? "Email harus valid" /*email harus valid*/
+                          //     ? "Email harus valid" 
                           //     : null,
                           decoration: new InputDecoration(
                             hintText: "Email Address",
@@ -97,7 +97,7 @@ class _loginPageState extends State<loginPage> {
                           keyboardType: TextInputType.text,
                           onSaved: (input) => requestModel.password = input,
                           // validator: (input) => input.length < 3
-                          //     ? "Password harus lebih dari 3 huruf" /*Password harus lebih dari 3 huruf*/
+                          //     ? "Password harus lebih dari 3 huruf" 
                           //     : null,
                           obscureText: hidePassword,
                           decoration: new InputDecoration(
