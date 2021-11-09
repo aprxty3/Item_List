@@ -1,28 +1,18 @@
-class loginRespon {
-  final String token;
-  final String error;
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import '../model/login_model.dart';
 
-  loginRespon({this.token, this.error});
+class APIService {
+  Future<loginRespon> login(loginRequest requestModel) async {
+    String url = "https://reqres.in/api/login";
 
-  factory loginRespon.fromJson(Map<String, dynamic> json) {
-    return loginRespon(
-        token: json['token'] != null ? json['token'] : "",
-        error: json['error'] != null ? json['error'] : "");
-  }
-}
-
-class loginRequest {
-  String email;
-  String password;
-
-  loginRequest({this.email, this.password});
-
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> map = {
-      'email': email.trim(),
-      'password': password.trim()
-    };
-
-    return map;
+    final response = await http.post(url, body: requestModel.toJson());
+    if (response.statusCode == 200 || response.statusCode == 400) {
+      return loginRespon.fromJson(
+        json.decode(response.body),
+      );
+    } else {
+      throw Exception('Failed to load data!');
+    }
   }
 }
