@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:list_items/login_page/HUD.dart';
 import 'package:list_items/api/api.dart';
 import 'package:list_items/login_page/model/login_model.dart';
+import 'package:list_items/main_page/view/home.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -165,6 +165,16 @@ class _loginPageState extends State<loginPage> {
                           ),
                           color: Theme.of(context).accentColor,
                           shape: StadiumBorder(),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return HomePage();
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
