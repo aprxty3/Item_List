@@ -86,7 +86,6 @@ class itemCart extends StatelessWidget {
                     color: Colors.black.withOpacity(0.4),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  
                 )
               ],
             ),

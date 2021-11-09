@@ -21,14 +21,8 @@ class loginAPI {
 
 class listBarangApi {
   static Future<List<listBarang>> getlistBarang() async {
-    var uri = Uri.https('yummly2.p.rapidapi.com', '/feeds/list',
-        {"limit": "18", "start": "0", "tag": "list.recipe.popular"});
-
-    final response = await http.get(uri, headers: {
-      "x-rapidapi-key": "c7e44a9fe9mshd6139e551f20b66p147763jsndce4d78c8c3f",
-      "x-rapidapi-host": "yummly2.p.rapidapi.com",
-      "useQueryString": "true"
-    });
+    final response = await http.get(Uri.parse(
+        'http://172.104.44.22/api/resource/Item?fields=["item_code", "item_name","image","normal_rate","promo_rate"]&filters=[["Item","item_group","=","Products"]]'));
 
     Map data = jsonDecode(response.body);
     List _temp = [];

@@ -47,7 +47,6 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return itemCart(
                     title: _listBarang[index].name,
-                    
                     rating: _listBarang[index].rate.toString(),
                     thumbnailUrl: _listBarang[index].images);
               },
