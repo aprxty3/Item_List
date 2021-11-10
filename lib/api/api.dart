@@ -23,6 +23,11 @@ class listBarangApi {
   static Future<List<listBarang>> getlistBarang() async {
     final response = await http.get(Uri.parse(
         'http://172.104.44.22/api/resource/Item?fields=["item_code", "item_name","image","normal_rate","promo_rate"]&filters=[["Item","item_group","=","Products"]]'));
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+    } else {
+      print('error get data');
+    }
 
     Map data = jsonDecode(response.body);
     List _temp = [];
