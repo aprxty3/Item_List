@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:list_items/login_page/model/login_model.dart';
-import 'package:list_items/main_page/model/item.dart';
+import 'package:list_items/model/login_model.dart';
+import 'package:list_items/model/item.dart';
 
 class loginAPI {
   Future<loginRespon> login(loginRequest requestModel) async {

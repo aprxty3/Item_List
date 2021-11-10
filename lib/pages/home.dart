@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:list_items/api/api.dart';
-import 'package:list_items/main_page/view/widget/item_cart.dart';
-import 'package:list_items/main_page/model/item.dart';
+import 'package:list_items/widget/item_cart.dart';
+import 'package:list_items/model/item.dart';
 
 class HomePage extends StatefulWidget {
   @override

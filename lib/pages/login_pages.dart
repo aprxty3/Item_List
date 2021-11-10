@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:list_items/login_page/HUD.dart';
+import 'package:list_items/widget/HUD.dart';
 import 'package:list_items/api/api.dart';
-import 'package:list_items/login_page/model/login_model.dart';
-import 'package:list_items/main_page/view/home.dart';
+import 'package:list_items/model/login_model.dart';
+import 'package:list_items/pages/home.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -72,7 +72,7 @@ class _loginPageState extends State<loginPage> {
                           keyboardType: TextInputType.emailAddress,
                           onSaved: (input) => requestModel.email = input,
                           // validator: (input) => !input.contains("@")
-                          //     ? "Email harus valid" 
+                          //     ? "Email harus valid"
                           //     : null,
                           decoration: new InputDecoration(
                             hintText: "Email Address",
@@ -97,7 +97,7 @@ class _loginPageState extends State<loginPage> {
                           keyboardType: TextInputType.text,
                           onSaved: (input) => requestModel.password = input,
                           // validator: (input) => input.length < 3
-                          //     ? "Password harus lebih dari 3 huruf" 
+                          //     ? "Password harus lebih dari 3 huruf"
                           //     : null,
                           obscureText: hidePassword,
                           decoration: new InputDecoration(
@@ -136,10 +136,31 @@ class _loginPageState extends State<loginPage> {
                           padding: EdgeInsets.symmetric(
                               vertical: 12, horizontal: 80),
                           onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return HomePage();
+                                },
+                              ),
+                            );
+
                             if (validateAndSave()) {
                               setState(() {
                                 isApiCallProcess = true;
                               });
+
+                              // onTap:
+                              // () {
+                              //   Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) {
+                              //         return HomePage();
+                              //       },
+                              //     ),
+                              //   );
+                              // };
 
                               loginAPI apiService = new loginAPI();
                               apiService.login(requestModel).then((value) {
@@ -165,16 +186,6 @@ class _loginPageState extends State<loginPage> {
                           ),
                           color: Theme.of(context).accentColor,
                           shape: StadiumBorder(),
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) {
-                          //         return HomePage();
-                          //       },
-                          //     ),
-                          //   );
-                          // },
                         ),
                       ],
                     ),
